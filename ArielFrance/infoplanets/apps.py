@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ExoplaneteConfig(AppConfig):
+class infoplanetsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'exoplanete'
+    name = 'infoplanets'
