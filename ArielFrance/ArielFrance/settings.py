@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'ArielFrance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'arielfrance',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ArielFrance',
         'USER': 'fabgg',
         'PASSWORD': '54321epacsenuR',
         'HOST': 'localhost',

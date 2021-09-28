@@ -63,10 +63,12 @@ class Star (models.Model):
     stellar_distance = models.DecimalField(max_digits=13, decimal_places=9, null=True, blank=True)
     parallax = models.DecimalField(max_digits=13, decimal_places=9, null=True, blank=True)
     parallax_moe = models.DecimalField(max_digits=10, decimal_places=9, null=True, blank=True)
+
     ecliptic_latitude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
     ecliptic_longiude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
     galactic_latitude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
     galactic_longitude = models.DecimalField(max_digits=10, decimal_places=6, null=True, blank=True)
+    
     orbiting_planets = models.ForeignKey(Exoplanet, on_delete=models.PROTECT)
 
     total_proper_motion = models.DecimalField(max_digits=12, decimal_places=9, null=True, blank=True)
@@ -78,6 +80,42 @@ class Star (models.Model):
     proper_motion_dec = models.DecimalField(max_digits=12, decimal_places=9, null=True, blank=True)
     proper_motion_dec_moe = models.DecimalField(max_digits=10, decimal_places=9, null=True, blank=True)
     
+    effective_temperature = models.DecimalField(max_digits=8, decimal_places=4, null=True, blank=True)
+    effective_temperature_moe = models.DecimalField(max_digits=8, decimal_places=4, null=True, blank=True)
+
+    spectral_type = models.CharField(max_length=5, null=True, blank=True)
+
+    metallicity = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
+    metallicity_moe = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
+
+    density = models.DecimalField(max_digits=10, decimal_places=8, null=True, blank=True)
+    density_moe = models.DecimalField(max_digits=9, decimal_places=8, null=True, blank=True)
+
+    mass = models.DecimalField(max_digits=9, decimal_places=5, null=True, blank=True)
+    mass_moe = models.DecimalField(max_digits=7, decimal_places=5, null=True, blank=True)
+
+    radius = models.DecimalField(max_digits=8, decimal_places=4, null=True, blank=True)
+    radius_moe = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
+
+    surface_gravity = models.DecimalField(max_digits=10, decimal_places=8, null=True, blank=True)
+    surface_gravity_moe = models.DecimalField(max_digits=9, decimal_places=8, null=True, blank=True)
+
+    luminosity = models.DecimalField(max_digits=10, decimal_places=8, null=True, blank=True)
+    luminosity_moe = models.DecimalField(max_digits=9, decimal_places=8, null=True, blank=True)
+
+    radial_velocity = models.DecimalField(max_digits=18, decimal_places=15, null=True, blank=True)
+    radial_velocity_moe = models.DecimalField(max_digits=16, decimal_places=15, null=True, blank=True)
+
+    age = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    age_moe = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+
+    rotational_velocity = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    rotational_velocity_moe = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+
+    rotation_period = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+    rotation_period_moe = models.DecimalField(max_digits=4, decimal_places=2, null=True, blank=True)
+
+
     #Photometry
     mV = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
     mV_moe = models.DecimalField(max_digits=10, decimal_places=9, null=True, blank=True)
@@ -111,6 +149,8 @@ class Star (models.Model):
 
     mB = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
     mB_moe = models.DecimalField(max_digits=10, decimal_places=9, null=True, blank=True)
+
+    
 
     
 
