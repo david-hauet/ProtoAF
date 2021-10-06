@@ -52,6 +52,9 @@ class Exoplanet (models.Model):
     ephemeris_period_uncertainty = models.DecimalField(max_digits=8, decimal_places=7, null=True, blank=True)
     ephemeris_current_oc_min = models.DecimalField(max_digits=6, decimal_places=3, null=True, blank=True)
 
+    def __str__(self):
+        return self.name
+
 class Star (models.Model):
 
     #X_moe: Margin of error of variable X
@@ -150,20 +153,25 @@ class Star (models.Model):
     mB = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
     mB_moe = models.DecimalField(max_digits=10, decimal_places=9, null=True, blank=True)
 
-    
-
-    
-
+    def __str__(self):
+        return self.name
 
 class Light_curve (models.Model):
+    name = models.CharField(max_length=255)
     associated_planet = models.ForeignKey(Exoplanet, on_delete=models.PROTECT)
     image = models.FileField(null=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Synthetic_spectre (models.Model):
+    name = models.CharField(max_length=255)
     associated_planet = models.ForeignKey(Exoplanet, on_delete=PROTECT)
     image = models.FileField(null=True)
 
+    def __str__(self):
+        return self.name
 
     
 
