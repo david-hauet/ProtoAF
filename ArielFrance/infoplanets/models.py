@@ -36,20 +36,20 @@ class Exoplanet (models.Model):
 
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=3, choices=PLANET_TYPE, default=PLANET_TYPE_UNASSIGNED)
-    priority = models.PositiveSmallIntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(4)])
+    priority = models.CharField(max_length=8)
     total_observations = models.PositiveSmallIntegerField(default=0, null=True)
     recent_observations = models.PositiveSmallIntegerField(default=0, null=True)
     ra_j2000 = models.CharField(max_length=255, null=True, blank=True)
     dec_j2000 = models.CharField(max_length=255, null=True, blank=True)
-    v_mag = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
-    r_mag = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
-    gaia_g_mag = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
-    depth_mmag = models.DecimalField(max_digits=5, decimal_places=4, null=True, blank=True)
+    v_mag = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
+    r_mag = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
+    gaia_g_mag = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
+    depth_mmag = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
     transit_duration_hours = models.DecimalField(max_digits=6, decimal_places=4, null=True, blank=True)
     ephemeris_mid_time_bjd_tdb = models.DecimalField(max_digits=14, decimal_places=6, null=True, blank=True)
     ephemeris_mid_time_uncertainty = models.DecimalField(max_digits=8, decimal_places=7, null=True, blank=True)
     ephemeris_period_days = models.DecimalField(max_digits=13, decimal_places=9, null=True, blank=True)
-    ephemeris_period_uncertainty = models.DecimalField(max_digits=8, decimal_places=7, null=True, blank=True)
+    ephemeris_period_uncertainty = models.DecimalField(max_digits=12, decimal_places=8, null=True, blank=True)
     ephemeris_current_oc_min = models.DecimalField(max_digits=6, decimal_places=3, null=True, blank=True)
 
     def __str__(self):
@@ -157,7 +157,7 @@ class Star (models.Model):
         return self.name
 
 class Light_curve (models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default='-')
     associated_planet = models.ForeignKey(Exoplanet, on_delete=models.PROTECT)
     image = models.FileField(null=True)
 
@@ -166,7 +166,7 @@ class Light_curve (models.Model):
 
 
 class Synthetic_spectre (models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, default='-')
     associated_planet = models.ForeignKey(Exoplanet, on_delete=PROTECT)
     image = models.FileField(null=True)
 
