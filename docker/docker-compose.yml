@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ArielFrance
+      MYSQL_DATABASE: ArielFrance
+      MYSQL_USER: infoplanets
+      MYSQL_PASSWORD: infoplanets
+    ports:
+      - "3306:3306"
+  proto-af:
+    build:
+      context: .
+    volumes:
+      - ../:/usr/src/app/ProtoAF
+    ports:
+      - "8000:8000"
+    restart: on-failure

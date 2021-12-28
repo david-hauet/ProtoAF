@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-npyrj9lwn3!8irgidf5ih!%bvys^hclph_@2c^(eim8(hk73w(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'infoplanets',
+    'infoplanets.apps.infoplanetsConfig',
 ]
 SITE_ID = 1
 
@@ -76,14 +76,30 @@ WSGI_APPLICATION = 'ArielFrance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'ArielFrance',
+#         'USER': 'fabgg',
+#         'PASSWORD': '54321epacsenuR',
+#         'HOST': 'localhost',
+#         'PORT': '5432'
+#     }
+# }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'db.sqlite3'
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ArielFrance',
-        'USER': 'fabgg',
-        'PASSWORD': '54321epacsenuR',
-        'HOST': 'localhost',
-        'PORT': '5432'
+        'ENGINE'  : 'django.db.backends.mysql', 
+        'NAME'    : 'ArielFrance',                 
+        'USER'    : 'infoplanets',                     
+        'PASSWORD': 'infoplanets',              
+        'HOST'    : 'db',                
+        'PORT'    : '3306',
     }
 }
 
